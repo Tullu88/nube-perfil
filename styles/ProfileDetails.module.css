@@ -1,0 +1,8 @@
+.infoTabs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form {
+    flex-wrap: wrap;
+}

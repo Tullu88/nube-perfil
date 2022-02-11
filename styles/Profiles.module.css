@@ -1,0 +1,36 @@
+.profile {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    outline: 1px solid black;
+    display: flex;
+    width: 50rem;
+    height: 5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.name {
+    font-weight: 900;
+    margin-left: 1rem;
+    margin-top: 0.4rem;
+    height: 2rem;
+    flex-basis: 10%;
+}
+
+.email {
+    color: white;
+    margin-top: 10rem;
+}
+
+.tags {
+    height: 1.5rem;
+    position: absolute;
+    margin-left: 6rem;
+    margin-top: 3.5rem;
+    display: flex;
+}
+
+.tagsInner {
+    margin-right: 1rem;
+    margin-left: 0.3rem;
+}
