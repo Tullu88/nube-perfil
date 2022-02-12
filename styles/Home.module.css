@@ -1,3 +1,12 @@
+.welcomeMsg {
+  margin-left: 19%;
+  font-size: 10rem;
+}
+
+.createWindow {
+  margin-left: 5rem;
+}
+
 .container {
   padding: 0 2rem;
 }

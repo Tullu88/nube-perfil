@@ -1,0 +1,12 @@
+.navBar {
+    display: flex;
+    height: 10rem;
+    justify-content: center;
+}
+
+.link {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    font-size: large;
+    font-weight: 900;
+}

@@ -4,56 +4,49 @@ import Styles from '../../styles/Profiles.module.css'
 import Navigation from '../components/Navigation/Navigation';
 
 const View = () => {
-    const [ profiles, setProfiles ] = useState();
-    var array = [];
-    var data;
+    var profileInfo = []; // array that will hold profile information
 
+    // Conditional to check that 'window' has loaded first, before calling 'localStorage'
     if (typeof window !== 'undefined') {
        
-
-        //const profiles = localStorage;
+        // Loop that iterates trough 'localStorage' and saves the value of each element to a new array called 'profileInfo'
+        // The array variable is used in the 'return' to output profile information for viewing
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             const value = localStorage.getItem(key);
             
-            array.push(JSON.parse(value))
-            console.log(JSON.parse(value))
+            profileInfo.push(JSON.parse(value))
         }
-
-        //data = localStorage.getItem(profileId);
         
     }
 
+    // Function takes user to the page of the clicked profile (using router)
+    // replaces [profileId] with the user's email which is saved as the element's id before accessing 'ProfileDetails' component
+    // Need a recursive function here because it seems the data takes time to appear in 'localStorage'
     const handleClick = (e) => {
         if (e.target.id) {
             location.href = `http://localhost:3000/${e.target.id}/ProfileDetails`;
-            console.log('error here')
         } else {
-            console.log('error here')
             handleClick;
         }
-       
-        //console.log(localStorage.getItem(e.target.id))
-        //console.log(e.target.id);
-        //console.log('Handling click');
     }
 
    
 
 
     return (
-        <div>
+        <div className={Styles.viewWindow}>
             <Navigation onChange={(e) => setCountry(e)} isRequired={'required'}/>
             <h1>All Profiles</h1>
-            {array.map(e => 
-            <div className={Styles.profile} onClick={handleClick} id={e.email} key={e.email}>
-                <AvatarGenerator seed={e.email} key={e.email}/>
-                <div className={Styles.name}>{e.name}</div>
+            {profileInfo.map(a => 
+            <div className={Styles.profile} onClick={handleClick} id={a.email} key={a.email}>
+                <AvatarGenerator seed={a.email} key={a.email}/>
+                <div className={Styles.name}>{a.name}</div>
                 <div className={Styles.tags}>
-                    {e.skills && <strong>Skills:</strong>} 
-                    <div className={Styles.tagsInner}>{e.skills}</div>
-                    {e.sector && <strong>Sectors:</strong>} 
-                    <div className={Styles.tagsInner}>{e.sector}</div>
+                    {a.skills && <strong>Skills:</strong>} 
+                    <div className={Styles.tagsInner}>{a.skills?.split(' ').map(b => <div key={b} className={Styles.tagText}>{b}</div>)}</div>
+                    {a.sector && <strong>Sectors:</strong>} 
+                    <div className={Styles.tagsInner}>{a.sector?.split(' ').map(b => <div key={b} className={Styles.tagText}>{b}</div>)}</div>
                     </div>
             </div>)}
             {/* <p>{profiles.email}</p> */}

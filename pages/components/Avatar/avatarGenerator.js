@@ -3,7 +3,9 @@ import { createAvatar } from '@dicebear/avatars';
 import Styles from '../../../styles/Avatar.module.css'
 
 const AvatarGenerator = (props) => {
-    //let svg = createAvatar();
+    // This uses the dice bear npm package to generate avatars for each user
+    // The seed being passed through the props to be used here is the email
+    //which is unique to each user
 
     return (
         <div>

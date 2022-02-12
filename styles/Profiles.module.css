@@ -9,6 +9,10 @@
     justify-content: flex-start;
 }
 
+.viewWindow {
+    margin-left: 5rem;
+  }
+
 .name {
     font-weight: 900;
     margin-left: 1rem;
@@ -33,4 +37,16 @@
 .tagsInner {
     margin-right: 1rem;
     margin-left: 0.3rem;
+    display: flex;
+}
+
+.tagText {
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    background-color: rgb(153, 255, 255);
+    border-radius: 0.6rem;
+    height: 1.4em;
+    outline: 1px solid rgb(214, 214, 214);
 }

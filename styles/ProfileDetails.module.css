@@ -6,3 +6,7 @@
 .form {
     flex-wrap: wrap;
 }
+
+.viewWindow {
+    margin-left: 5rem;
+  }

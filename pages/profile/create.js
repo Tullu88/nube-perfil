@@ -2,51 +2,46 @@ import CountrySelector from "../components/countrySelector"
 import {useState, useEffect} from 'react';
 import Navigation from "../components/Navigation/Navigation";
 import Input from "../components/inputComponent"
+import Styles from '../../styles/Home.module.css'
 
-const New = (props) => {
+// This component is for the creation of new profiles
+const New = () => {
     const [ email, setEmail ] = useState();
     const [ name, setName ] = useState();
     const [ lastName, setLastName ] = useState();
     const [ country, setCountry ] = useState();
     const [ description, setDescription ] = useState();
     const [ alreadyExists, setAlreadyExists ] = useState(false);
-
-    //const [ profileList, setProfileList ] = useState([]);
-
-    const [ id, setId ] = useState();
     
     const profile = {};
   
     const HandleSubmit = (e) => {
         e.preventDefault();
 
-        var savedName = JSON.parse(localStorage.getItem(email));
-
+        // Before saving to storage, check if email already exists to avoid overlap
         if (localStorage.getItem(email)){
-            console.log('email already exists');
-            //console.log(JSON.parse(localStorage.getItem(email)).name);
+            // State that activates to notify if the email exists 
             setAlreadyExists(true);
             return;
-        } 
+        }
+
         setAlreadyExists(false);
 
-        const oldData = localStorage.getItem('profile');
-
-        if (localStorage.length === undefined || localStorage.length === null ){
-            setId(0);
-        } 
-
+        // Save all the state values acquired from the inputs and save them to 'profile' variable
         profile = { email, name, lastName, country, description };
 
-        const data = localStorage.setItem(email, JSON.stringify(profile));
-        
-        setId(localStorage.length + 1);
+        // Then use the 'profile' to save the new profile to 'localStorage'
+        localStorage.setItem(email, JSON.stringify(profile));
 
-        location.href = 'http://localhost:3000/profile/view';
+        // Redirects the user to page displaying created profile(s)
+        setTimeout(() => {
+            location.href = 'http://localhost:3000/profile/view';
+        }, 500)
+        
      }
 
     return (
-        <div>
+        <div className={Styles.createWindow}>
             <Navigation />
             <strong>Please enter your details</strong>
                 <form onSubmit={HandleSubmit}>
